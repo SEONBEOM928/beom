@@ -1,0 +1,16 @@
+깃 폴더에 연동하기
+1. git bash 다운로드 받는다.
+2. C드라이브에 폴더를 생성함
+3. 폴더 안에서 마우스 우클릭 후 git bash here 클릭
+4. git init -> 내 깃허브에서 http 주소 복사 -> git clone(**첫 빈폴더일때만 clone, 다음부터는 pull로 가져와야함**) + 복사주소 입력
+5. cd beom-> git branch로 브랜치 확인
+===========================
+
+
+깃 올리는 법 
+git add .
+git commit -m " 작성 할 메시지 " 
+git push origin 브랜치명
+
+
+

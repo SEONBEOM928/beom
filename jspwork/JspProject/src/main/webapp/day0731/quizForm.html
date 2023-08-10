@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Cute+Font&family=Diphylleia&family=Dongle:wght@300&family=Hi+Melody&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="quizAction.jsp" method="post">
+		<table class="table table-bordered" style="width: 500px;">
+			<tr>
+				<th>상품명</th>
+				<td>
+					<input type="text" name="sangName" placeholder="상품명 입력"
+					required="required" class="form-control" style="width: 150px;">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>사이즈</th>
+				<td>
+				<input type="radio" name="size" value="S">S&nbsp;
+				<input type="radio" name="size" value="M">M&nbsp;
+				<input type="radio" name="size" value="L">L&nbsp;
+				<input type="radio" name="size" value="XL">XL&nbsp;
+				</td>
+			</tr>
+			
+			<tr>
+				<th>색상</th>
+				<td>
+				<input type="checkbox" name="color" value="red">red&nbsp;
+				<input type="checkbox" name="color" value="yellow">yellow&nbsp;
+				<input type="checkbox" name="color" value="green">green&nbsp;
+				<input type="checkbox" name="color" value="blue">blue&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>추가상품</th>
+				<td>
+					<select size="2" multiple="multiple" name="plus">
+						<option value="헤드셋">헤드셋</option>
+						<option value="보조배터리">보조배터리</option>
+						<option value="케이스">케이스</option>
+						<option value="마우스">마우스</option>
+						<option value="터치펜">터치펜</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="주문하기" class="btn btn-success" style="width: 300px;">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Diphylleia&family=IBM+Plex+Serif:wght@100&family=Kalam:wght@300&family=Noto+Serif+KR:wght@500&family=Tajawal:wght@200&display=swap');
+body{
+    font-family: Diphylleia;
+}
+
+.btn{
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.btn-green{
+    background-color: green;
+    color: white;
+}
+
+.btn-pink{
+    background-color: pink;
+    color: black;
+}
+
+.btn-blue{
+    background-color: blue;
+    color: yellow;
+}
+
+.btn-gray{
+    background-color: gray;
+    color: red;
+}

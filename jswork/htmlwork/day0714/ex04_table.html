@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>     
+    <style>
+        .tb1{
+            width: 400px;
+            border: 3px solid gray;
+            border-collapse: collapse;
+        }
+        .tb1 td,.tb1,th{
+            border: 3px solid gray;
+        }
+
+        .tb1 tr th{
+            background-color: beige;
+        }
+
+        .tb1 tr td:hover{
+            background-color: gold;
+            color: white;
+        }
+        .tb2{
+            width: 600px;
+            height: 300px;
+            border: 3px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+          }
+
+          .tb3{
+            width: 600px;
+            height: 300px;
+            border: 3px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+          }
+
+          .tb3 tr td:hover{
+            background-color: blue;
+            color: white;
+          }
+        
+    </style>
+</head>
+<body>
+    <table border="1" style="width: 300px;">
+        <caption><b>[표 1]</b></caption>
+        <tr height="50" bgcolor="orange">
+            <td align="center">하나</td>
+            <td align="right" valign="top">둘</td>
+            <td valign="bottom" bgcolor="gray">셋</td>
+        </tr>
+        <tr align="center" height="50">
+            <td colspan="3">3칸 합침</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="tb1">
+        <caption><b>[표 2]</b></caption>
+        <tr>
+            <th>사진</th>
+            <th>이름</th>
+            <th>핸드폰</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td rowspan="4">
+            <img src="../flower_ani/f12.png">
+            </td>
+            <td>김선범</td>
+            <td>010-2443-2170</td>
+            <td>부천시</td>
+        </tr>
+        <tr>
+            <td>김석진</td>
+            <td>010-2222-3333</td>
+            <td>서울시</td>
+        </tr>
+        <tr>
+            <td>김영준</td>
+            <td>010-5555-6666</td>
+            <td>오사카시</td>
+        </tr>
+        <tr>
+            <td>최진평</td>
+            <td>010-7777-3333</td>
+            <td>협곡</td>
+        </tr>
+    </table>
+    <hr>
+    <table class="tb2" border="1">
+        <caption><b>[표 문제,span]</b></caption>
+        <tr>
+            <td rowspan="2">1</td>
+            <td colspan="2">2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td colspan="3">4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+
+    <table class="tb3" border="1" onmouseover="red">
+        <caption><b>[표 문제]</b></caption>
+        <tr>
+            <th>이름</th>
+            <th colspan="5">사진</th>
+            <th>신상정보</th>
+        </tr>
+        <tr>
+            <td rowspan="7">아이유</td>
+        </tr>
+        <tr>
+            <td rowspan="7" colspan="5">
+                <img src="../Food/4.jpg" width="300px" height="200px">
+            </td> 
+        </tr>
+        <tr>
+            <td>동해물과</td>  
+        </tr>
+        <tr>
+            <td>백두산이</td>
+           
+        </tr>
+        <tr>
+            <td>마르고닳도록</td>
+           
+        </tr>
+        <tr>
+            <td>하느님이</td>
+           
+        </tr> 
+        <tr>
+            <td>보우하사</td>
+         </tr>                  
+    </table>
+</body>
+</html>

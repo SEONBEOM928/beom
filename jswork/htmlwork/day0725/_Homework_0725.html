@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Cute+Font&family=Diphylleia&family=Dongle:wght@300&family=Hi+Melody&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        #result{
+            width: 500px;
+            height: 200px;
+            font-family: '궁서체';
+            padding: 10px;
+            font-size: 20px;
+            border: 1px solid green;
+        }
+    </style>
+<script>
+    $(function(){
+
+        $("#btn1").click(function(){
+            var s="";
+            s+="연령대: "+$("input[name='age']:checked").val()+"<br>";
+            
+            var len=$("input[name='nara']:checked").length;
+            
+            s+="여행해본나라: "+len+"국가 ";
+            if(len==0)
+                    s+="<br>가본나라 없음";
+                else{
+                    $("input[name='nara']:checked").each(function(i,element){
+
+                        s+=$(this).val()+"&nbsp;";
+                    });
+                }
+                
+          s+="<br>코로나백신: "+($("#corona").is(":checked")?"접종완료":"미접종")+"<br>";
+          
+          var fonttext=$("#font").text();
+          var fontval=$("#font").val();
+
+          $("div").css("font-family",fontval);
+
+          $("#result").html(s);
+        });
+
+    })
+</script>
+</head>
+<body>
+    <form>
+        <legend>과제물</legend>
+        <table class="table table-bordered" style="width: 500px;">
+        <tr>
+            <th>당신의 연령대는?</th>
+            <td>
+                <input type="radio" id="age" name="age" value="20대">20대
+                <input type="radio" id="age" name="age" value="30대">30대
+                <input type="radio" id="age" name="age" value="40대">40대
+                <input type="radio" id="age" name="age" value="50대">50대
+                <br>
+            </td>
+        </tr>
+        
+        <tr>
+            <th>여행해본 나라는?</th>
+            <td>
+                <input type="checkbox" id="nara" name="nara" value="이탈리아">이탈리아
+                <input type="checkbox" id="nara" name="nara" value="일본">일본
+                <input type="checkbox" id="nara" name="nara" value="미국">미국
+            </td>
+        </tr>
+        
+        <tr>
+            <th>코로나백신</th>
+            <td>
+                <input type="checkbox" id="corona">접종유무
+            </td>
+        </tr>
+
+        <tr>
+            <th>글씨체</th>
+            <td>
+            <select id="font">
+                <option value="Dongle">Dongle</option>
+                <option value="궁서체">궁서체</option>
+                <option value="Diphylleia">Diphylleia</option>
+                <option value="Nanum Brush Script">Nanum Brush Script</option>
+
+            </select>
+            <span></span>
+        </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <button type="button" id="btn1"class= "btn btn-outline-success">결과전송버튼</button>
+            </td>
+        </tr>
+
+    
+
+    </table>
+
+    <div id="result"></div>
+    </form>
+</body>
+</html>

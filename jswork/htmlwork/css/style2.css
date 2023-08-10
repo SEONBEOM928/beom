@@ -1,0 +1,16 @@
+div{
+    width: 250px;
+    height: 250px;
+    float: left;
+    font-size: 150px;
+    font-weight: bold;
+    text-align: center;
+    border: 6px solid black;
+    border-radius: 10000pt;
+    box-shadow: 20px 5px 25px gray;
+    background-color: red;
+    color: white;
+    margin-left: 30px;
+    margin-bottom: 50px;
+    
+}

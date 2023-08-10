@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/buttonStyle.css">
+    <style>
+        #result {
+            position: absolute;
+            width: 400px;
+            background-color: beige;
+        }
+
+        #result img {
+            max-width: 300px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var food = document.getElementById("food");
+            var star = document.getElementById("star");
+
+            food.onclick = function () {
+
+                var a = confirm("음식을 출력할까요?");
+
+                if (a) {
+                    result.innerHTML = "<img src='../Food/5.jpg'>";
+                }
+            }
+
+            star.onclick = function () {
+
+                var b = confirm("연예인을 출력할까요?");
+
+                if (b) {
+                    result.innerHTML = "<img src='../연예인사진/15.jpg'>";
+                }
+                else{
+                    result.innerHTML="취소를 선택하셨습니다";
+                }
+            }
+
+        }
+
+        var imgArr=new Array();
+
+        imgArr.push("../연예인사진/4.jpg");
+        imgArr.push("../연예인사진/6.jpg");
+        imgArr.push("../food/10.jpg");
+        imgArr.push("../food/1.jpg");
+        imgArr.push("../연예인사진/12.jpg");
+
+        window.onload=function(){
+            imge.onclick=function() {
+            var num=prompt("출력할 이미지의 인덱스 번호를 입력해주세요");
+            if(num>=0&&num<5)
+            result.innerHTML="<img src='"+imgArr[num]+"'>";
+            else
+            result.innerHTML="해당 번호는 없습니다";
+            }
+        }
+
+
+</script>
+</head>
+
+<body>
+    <!-- 버튼 2개에 하나는 Food,하나는 연예인 이라고 쓰고 
+        css는 우리가 만든 buttonStyle에서 적용한다
+    
+    food버튼을 클릭하면 음식사진을 div에 출력하고 연예인
+    을 클릭하면 연예인 한명을 출력한다
+    (단, 2번 모두 음식을 출력할까요? 라고 물어보고 예를 클릭시에만 이미지 출력한다) -->
+</body>
+
+<body>
+    <button type="button" class="btn btn-green" id="food">Food</button>
+    <button type="button" class="btn btn-pink" id="star">연예인</button>
+    <button type="button" class="btn btn-blue" id="imge">이미지출력</button>
+    <hr>
+    <div id="result"></div>
+
+
+    <!--문제2. 이미지출력이라는 버튼을 만들고..클릭시
+      promt로 "출력할 이미지의 인덱스 번호를 입력해주세요" 라고 출력 후
+        0 번을 입력하면 0번이미지 출력(총 5개의 이미지를 imgArr라는 배열형태로
+        넣어놓고 다양한 폴더의 이미지 5개 배열에 넣어주세요
+        (단, 배열 인덱스에 없는 값 입력시 div에 "해당번호는 없습니다"))-->
+    
+        
+
+</body>
+
+</html>
