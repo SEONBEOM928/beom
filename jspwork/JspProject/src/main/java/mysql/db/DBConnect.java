@@ -34,7 +34,7 @@ public class DBConnect {
 		Connection conn=null;
 		
 		try {
-			conn=DriverManager.getConnection(mysql_URL, "Tiger", "1234");
+			conn=DriverManager.getConnection(mysql_URL, "tiger", "1234");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
