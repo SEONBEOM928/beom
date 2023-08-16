@@ -3,7 +3,7 @@ package member.model;
 import java.sql.Timestamp;
 
 public class MemberDto {
-	
+
 	private String num;
 	private String id;
 	private String pass;
@@ -54,4 +54,5 @@ public class MemberDto {
 	public void setGaip(Timestamp gaip) {
 		this.gaip = gaip;
 	}
+	
 }
