@@ -21,7 +21,7 @@ public class OracleConnectTest {
 		String sql="select * from sawon order by name";
 		
 		try {
-			conn=DriverManager.getConnection(URL, "Tiger", "a1234");
+			conn=DriverManager.getConnection(URL, "tiger", "1234");
 			System.out.println("클라우드 오라클 서버 연결성공!!!");
 			
 			stmt=conn.createStatement();
@@ -72,7 +72,7 @@ public class OracleConnectTest {
 		
 		try {
 			
-			conn1=DriverManager.getConnection(URL, "Tiger", "a1234");
+			conn1=DriverManager.getConnection(URL, "tiger", "1234");
 			System.out.println("클라우드 오라클 서버 연결성공!!!");
 			
 			stmt1=conn1.createStatement();
@@ -119,7 +119,7 @@ public class OracleConnectTest {
 		String sql="select gender,count(*) cnt,to_char(avg(pay),'L999,999,999') avgpay from sawon group by gender";
 		
 		try {
-			conn=DriverManager.getConnection(URL, "Tiger", "a1234");
+			conn=DriverManager.getConnection(URL, "tiger", "1234");
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(sql);
 			

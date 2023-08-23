@@ -1,7 +1,24 @@
-alter table mysawon add photo varchar2(50);
+create sequence sq_mysawon;
 
-insert into mysawon values(seq_mysawon.nextval,'system','system','1234','111111-1111111',99,'³²ÀÚ','¿î¿µÆÀ','°ü¸®ÀÚ',sysdate,'../upload/a1.jpg');
+create table mysawon_info(num number(5) primary key,image varchar2(50),name varchar2(20),gender varchar2(15),addr varchar2(40),joomin varchar2(30)
+,hp varchar2(30),email varchar2(30),plusday date);
+
+
+create table mysawon_admin(id varchar2(30),pass varchar2(30));
+
+create table mysawon_buseo(num number(5) CONSTRAINT info_num references mysawon_info(num),
+grade varchar2(20), buseo varchar2(20), pay varchar2(30), ipsaday date);
+
+insert into mysawon_info values(sq_mysawon.nextval,'ì´ë¯¸ì§€','ê¹€ì„ì§„','ë‚¨ì','ìš©ì¸ì‹œ','970928-1111111','010-2443-2170','ksb928@naver.com',sysdate);
+
 
 commit;
+select * from mysawon_info where num=1;
 
-alter table mysawon modify gender varchar2(30);
+
+
+
+update mysawon_info set image='ì´ë¯¸ì§€', name='ê¹€ì˜ì¤€', gender='ë‚¨ì', addr='ì„œìš¸', joomin='1232', hp='01012341234', email='asdads' where num=1;
+
+commit;
+delete from mysawon_info where num=1;

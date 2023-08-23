@@ -18,7 +18,7 @@
 				<tr>
 					<td style="width: 100px;" align="center">아이디</td>
 					<td>
-					<input type="text" class="form-control" name="id" style="width: 200px;"
+					<input type="text" name="id" style="width: 200px;"
 					readonly="readonly" required="required" id="mid">&nbsp;&nbsp;
 					<button type="button" class="btn btn-danger btn-sm"
 					onclick="openId()" style="width: 80px;">아이디입력</button>

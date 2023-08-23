@@ -15,7 +15,7 @@ public class SinsangDao {
 	//insert
 	public void insertSinsang(SinsangDto dto) //서버에 전송만 하는것이라 void 쓴것
 	{
-		Connection conn=null;
+		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
 		String sql="insert into sinsang values(seq1.nextval,?,?,sysdate)";
