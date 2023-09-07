@@ -10,6 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+		//세션제거(loginok)
+		session.removeAttribute("loginok");
+	
+		//loginmain으로 이동
+		response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
+	%>
 </body>
 </html>

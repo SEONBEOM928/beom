@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +16,14 @@
 <%
 //절대경로잡기
 String root = request.getContextPath();
+
+String loginok=(String)session.getAttribute("loginok");
+
+
+String myid=(String)session.getAttribute("myid");
+
+MemberDao dao=new MemberDao();
+
 %>
 
 <link rel="stylesheet" type="text/css"
@@ -50,21 +59,39 @@ String root = request.getContextPath();
 						<li class="parent">
 						<a href="">about 회원</a>
 							<ul class="sub-menu">
-							<li><a href="<%=root%>/login.jsp?main=loginform.jsp">로그인</a></li>
+							<li><a href="<%=root%>/index.jsp?main=login/loginform.jsp">로그인</a></li>
 							<li><a href="<%=root%>/index.jsp?main=member/memberform.jsp">회원가입</a></li>
+						<% if (myid!=null&&myid.equals("admin")&&loginok!=null) { %>
 							<li><a href="<%=root%>/index.jsp?main=member/memberlist.jsp">회원목록</a></li>
-							</ul>
+							<%}%>						
+							<%if(loginok!=null) { %>
+							<li><a href="<%=root%>/index.jsp?main=member/myinfo.jsp?num=<%=dao.getNum(myid)%>">나의정보</a></li>
+							<%}%>
+							</ul></li>
 							
-							<li><a href="<%=root%>/index.jsp?main=guest/guestlist.jsp">방명록</a></li>
+							<li><a href="<%=root%>/index.jsp?main=guest/guestlist.jsp">회원방명록</a></li>
 							<li class="parent">
 								<a href="#">고객의 소리</a>
 								<ul class="sub-menu">
-									<li><a href="<%=root%>/index.jsp?main=board/boardlist.jsp">회원게시판</a></li>	
-									<li><a href="#">스마트게시판</a></li>	
+									<li><a href="<%=root%>/index.jsp?main=board/boardlist.jsp">스마트게시판</a></li>	
 								</ul>		
 						     </li>
-						<li><a href="#">찾아오시는길</a></li>
+						<li><a href="<%=root%>/index.jsp?main=load/map.jsp">찾아오시는길</a></li>
+					<li class="parent">
+						<a href="#">쇼핑몰</a>
+							<ul class="sub-menu">
+						<% if (myid!=null&&myid.equals("admin")&&loginok!=null) { %>
+							<li><a href="<%=root%>/index.jsp?main=shop/addform.jsp">상품등록</a></li>
+							<%}%>						
+							<%if(loginok!=null) { %>
+							<li><a href="<%=root%>/index.jsp?main=shop/shoplist.jsp?num=<%=dao.getNum(myid)%>">상품목록</a></li>
+							<%}%>
+							</ul></li>
 					</ul>
+					
+					
+					
+					
 				</nav>
 				<div class="clear"></div>
 			</div>
