@@ -16,17 +16,17 @@
      	insert into mycar (carname,carprice,carcolor,carguip) values(#{carname},#{carprice},#{carcolor},#{carguip})
      </insert>
      <!-- delete -->
-     <delete id="deleteOfMycar" parameterType="String">
+     <delete id="deleteOfMycar" parameterType="int">
      	delete from mycar where num=#{num}
      </delete>
      
-     <!-- getdata -->
-     <select id="getData" parameterType="String">
-     	select from
+     <!-- 수정폼 나타내기 -->
+     <select id="selectOneOfMyCar" parameterType="mdto" resultType="mdto">
+     	select * from mycar where num=#{num}
      </select>
      
-     <!-- update -->
-     <update id="updateOfMycar" parameterType="String" >
+     <update id="updateOfMycar" parameterType="mdto" >
 		update mycar set carname=#{carname} ,carprice=#{carprice} , carcolor=#{carcolor} , carguip=#{carguip} where num=#{num}   
      </update>
+       
   </mapper>

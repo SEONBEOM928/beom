@@ -50,10 +50,24 @@ public class CarController {
 	   }
 	//delete
 	   @GetMapping("/kakao/delete")
-	   public String deletecar(@RequestParam("num") String num)
+	   public String deletecar(@RequestParam("num") int num)
 	   {
-		   dao.deleteCar(num);
-		   
+		   dao.deleteCar(num); 
+		   return "redirect:list";
+	   }
+	   
+	   @GetMapping("/kakao/updateform")
+	   public String uform(@RequestParam String num,Model model)
+	   {
+		   MyCarDto dto=dao.getData(num);
+		   model.addAttribute("dto", dto); 
+		   return "car/updateform";
+	   }
+	   
+	   @PostMapping("/kakao/update")
+	   public String update(@ModelAttribute MyCarDto dto)
+	   {
+		   dao.updateCar(dto);
 		   return "redirect:list";
 	   }
 }

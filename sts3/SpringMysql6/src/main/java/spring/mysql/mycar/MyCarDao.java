@@ -33,13 +33,18 @@ public class MyCarDao {
 		return session.selectList("getAllMylistOfMycar");
 	}
 	
-	public void deleteCar (String num)
+	public void deleteCar (int num)
 	{
 		session.delete("deleteOfMycar", num);
 	}
 	
-	public String getdata (String num)
+	public MyCarDto getData(String num)
 	{
-		session.se
+		return session.selectOne("selectOneOfMyCar", num);
+	}
+	
+	public void updateCar(MyCarDto dto)
+	{
+		session.update("updateOfMycar", dto);
 	}
 }
