@@ -1,6 +1,7 @@
 package spring.mvc.friday;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,11 @@ public class InfoDao implements InfoInter {
 		// TODO Auto-generated method stub
 		session.delete("deleteOfMyInfo", num);
 		
+	}
+
+	@Override
+	public List<InfoDto> getAllInfos(Map<String, String> map) {
+		return session.selectList("selectAllOfMyInfo",map);
 	}
 	
 	

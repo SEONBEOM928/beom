@@ -1,6 +1,7 @@
 package spring.mvc.friday;
 
 import java.util.List;
+import java.util.Map;
 
 public interface InfoInter {
 
@@ -10,5 +11,6 @@ public interface InfoInter {
 	public InfoDto getData(String num);
 	public void updateMyInfo(InfoDto dto);
 	public void deleteInfo(String num);
+	public List<InfoDto> getAllInfos(Map<String, String> map);
 	
 }
