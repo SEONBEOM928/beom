@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import answer.data.AnswerDao;
 import spring.mvc.reboard.BoardDao;
 import spring.mvc.reboard.BoardDto;
 
@@ -16,6 +17,9 @@ public class BoardListController {
 	
 	@Autowired
 	BoardDao dao;
+	
+	@Autowired
+	AnswerDao adao;
 	
 	@GetMapping("/board/list")
 	public ModelAndView list(
@@ -28,7 +32,7 @@ public class BoardListController {
 		int startPage; //각블럭에서 보여질 시작페이지
 		int endPage; //각블럭에서 보여질 끝페이지
 		int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0,오라클은 1)
-		int perPage=3; //한페이지당 보여질 글의 갯수
+		int perPage=6; //한페이지당 보여질 글의 갯수
 		int perBlock=5; //한블럭당 보여질 페이지 개수
 	     
 	     
@@ -54,6 +58,12 @@ public class BoardListController {
 		
 		//페이지에서 보여질 글만 가져오기
 		List<BoardDto> list=dao.getPagingList(startNum, perPage);
+		
+		//list의 각글에 댓글개수 표시
+		for(BoardDto d:list)
+		{
+			d.setAcount(adao.getAnswerList(d.getNum()).size());
+		}
 		
 		//각페이지에 출력할 시작번호
 		int no=totalCount-(currentPage-1)*perPage;
