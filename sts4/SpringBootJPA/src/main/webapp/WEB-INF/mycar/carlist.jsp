@@ -43,16 +43,20 @@
 	  	  <c:forEach var="dto" items="${list }" varStatus="i">
 	  	  	<tr align="center">
 	  	  	  <td>${i.count }</td>
-	  	  	  <td>${dto.carname }</td>
+	  	  	  <td>
+	  	  	  <a href="detail?num=${dto.num }"><img src="../save/${dto.carphoto }" width="40" height="40" border="1" hspace="10"></a>
+	  	  	  <br>
+	  	  	  ${dto.carname }
+	  	  	  </td>
 	  	  	  <td><div style="background-color:${dto.carcolor};" class="box"></div></td>
 	  	  	  <td><fmt:formatNumber value="${dto.carprice }" type="currency"/></td>
 	  	  	  <td>${dto.carguip}</td>
 	  	  	  <td><fmt:formatDate value="${dto.guipday}" pattern="yyyy-MM-dd HH:mm"/></td>
 	  	  	  <td>
 	  	  	  	  <button type="button" class="btn btn-info btn-sm"
-	  	  	  	  onclick="location.href=''">수정</button>
+	  	  	  	  onclick="location.href='updateform?num=${dto.num}'">수정</button>
 	  	  	  	  <button type="button" class="btn btn-danger btn-sm"
-	  	  	  	  onclick="location.href=''">삭제</button>
+	  	  	  	  onclick="location.href='delete?num=${dto.num}'">삭제</button>
 	  	  	  </td>
 	  	  	</tr>
 	  	  </c:forEach>	

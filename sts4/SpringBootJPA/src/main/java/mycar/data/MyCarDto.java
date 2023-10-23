@@ -34,6 +34,9 @@ public class MyCarDto {
 	@Column
 	private String carguip;
 	
+	@Column
+	private String carphoto;
+	
 	@CreationTimestamp //엔티티가 생성되는 시점의 시간 자동등록
 	private Timestamp guipday;
 	
