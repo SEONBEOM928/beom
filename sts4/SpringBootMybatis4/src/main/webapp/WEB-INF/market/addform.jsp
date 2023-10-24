@@ -32,7 +32,7 @@
 				<tr>
 					<th>상품사진</th>
 					<td>
-						<input type="file" name="photoname2" class="form-control"
+						<input type="file" name="photo" class="form-control"
 						style="width: 200px;">
 					</td>
 				</tr>	

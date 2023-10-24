@@ -36,7 +36,12 @@
 	  	  	<tr align="center">
 	  	  	  <td>${i.count }</td>
 	  	  	  <td>
-	  	  	  <a href=""><img src="../save/${mdto.photoname }" width="40" height="40" border="1" hspace="10"></a>
+	  	  	  <c:if test="${mdto.photoname!='no' }">
+	  	  	  <img src="../save/${mdto.photoname }" width="40" height="40" border="1" hspace="10">
+	  	  	  </c:if>
+	  	  	  <c:if test="${mdto.photoname=='no' }">
+	  	  	  <img src="../save/noimage.png" width="40" height="40" border="1" hspace="10">
+	  	  	  </c:if>
 	  	  	  <br>
 	  	  	  ${mdto.sang }
 	  	  	  </td>
@@ -46,7 +51,7 @@
 	  	  	  	  <button type="button" class="btn btn-info btn-sm"
 	  	  	  	  onclick="location.href=''">수정</button>
 	  	  	  	  <button type="button" class="btn btn-danger btn-sm"
-	  	  	  	  onclick="location.href=''">삭제</button>
+	  	  	  	  onclick="location.href='delete?num=${mdto.num}'">삭제</button>
 	  	  	  </td>
 	  	  	</tr>
 	  	  </c:forEach>	
