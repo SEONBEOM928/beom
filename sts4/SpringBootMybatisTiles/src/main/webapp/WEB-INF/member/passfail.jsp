@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,37 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gaegu:wght@300&family=Nanum+Pen+Script&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
-<style type="text/css">
-  div.layout div.menu{
-  	position: absolute;
-    top: 150px;
-    height: 70px;
-    width: 100%;
-    background-color: black;
-  }  
-  
-  div.layout div.main{
-  	position: absolute;
-    top: 220px;
-    left: 300px;
-    height: 2000px;
-    font-family: 'Dongle';
-    font-size: 17px;
-    width: 80%;
-  }
-</style>
 </head>
 <body>
-<div class="layout">
-  <div class="title">
-  	<tiles:insertAttribute name="title2"/>
-  </div>
-  <div class="menu">
-  	<tiles:insertAttribute name="menu2"/>
-  </div>	
-  <div class="main">
-  	<tiles:insertAttribute name="main"/>
-  </div>		
-</div>
+<script type="text/javascript">
+	alert("로그인 실패!!!");
+	history.back();
+</script>
 </body>
 </html>

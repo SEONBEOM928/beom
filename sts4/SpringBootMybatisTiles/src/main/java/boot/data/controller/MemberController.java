@@ -33,8 +33,11 @@ public class MemberController {
 	MemberService service;
 	
 	@GetMapping("/member/myinfo")
-	public String info()
+	public String info(Model model)
 	{
+		List<MemberDto> list=service.getAllMembers();
+		
+		model.addAttribute("list", list);
 		return "/member/myinfo";
 	}
 	
@@ -104,5 +107,49 @@ public class MemberController {
 		service.insertMember(dto);
 		
 		return "redirect:list";
+	}
+	
+	//삭제는 ajax -> ajax라서 void를 씀
+	@GetMapping("/member/delete")
+	@ResponseBody
+	public void deleteMember(@RequestParam String num)
+	{
+		service.deleteMember(num);
+	}
+
+	//사진만 수정
+	@PostMapping("/member/updatephoto")
+	@ResponseBody
+	public void photoupload(String num,MultipartFile photo,HttpSession session)
+	{
+		//업로드할 경로
+		String path=session.getServletContext().getRealPath("/membersave");
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHss");
+		String fileName=sdf.format(new Date())+"_"+photo.getOriginalFilename();
+		
+		//업로드
+		try {
+			photo.transferTo(new File(path+"/"+fileName));
+			
+			service.updatephoto(num, fileName); //db사진수정
+			//세션사진수정
+			session.setAttribute("loginphoto", fileName);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	@GetMapping("/member/deletemyinfo")
+	public String deletemyinfo(@RequestParam String id,
+			HttpSession session)
+	{
+		service.deleteMyInfo(id);
+		session.removeAttribute("loginok");
+		return "/";
 	}
 }
