@@ -112,8 +112,13 @@ public class MemberController {
 	//삭제는 ajax -> ajax라서 void를 씀
 	@GetMapping("/member/delete")
 	@ResponseBody
-	public void deleteMember(@RequestParam String num)
+	public void deleteMember(@RequestParam String num,HttpSession session)
 	{
+		String path=session.getServletContext().getRealPath("/membersave");
+		String photo=service.getDataByNum(num).getPhoto();
+		File file=new File(path+"/"+photo);
+		file.delete();
+		
 		service.deleteMember(num);
 	}
 
@@ -145,11 +150,41 @@ public class MemberController {
 		
 	}
 	@GetMapping("/member/deletemyinfo")
-	public String deletemyinfo(@RequestParam String id,
+	@ResponseBody
+	public void deletemyinfo(String num,
 			HttpSession session)
 	{
-		service.deleteMyInfo(id);
+		String path=session.getServletContext().getRealPath("/membersave");
+		String photo=service.getDataByNum(num).getPhoto();
+		File file=new File(path+"/"+photo);
+		file.delete();
+		
+		service.deleteMember(num);
 		session.removeAttribute("loginok");
-		return "/";
+		session.removeAttribute("myid");
+		session.removeAttribute("loginphoto");
+		session.removeAttribute("saveok");
+		
 	}
+	
+	@PostMapping("/member/updatemyinfo")
+	@ResponseBody
+	public void updatemyinfo(@ModelAttribute MemberDto dto)
+	{
+		service.updateMember(dto);
+	}
+	
+	/*@PostMapping("/member/updatemyinfo") map으로 하는방법
+	@ResponseBody
+	public Map<String, String> updatemyinfo(@ModelAttribute MemberDto dto)
+	{
+		service.updateMember(dto);
+		Map<String, String>map=new HashMap<>();
+		
+		map.put("name", dto.getName());
+		map.put("addr", dto.getAddr());
+		map.put("hp", dto.getHp());
+		map.put("email", dto.getEmail());
+		return map;
+	}*/
 }

@@ -30,7 +30,7 @@
     	<update id="updateMember" parameterType="member">
     		update bootmember set name=#{name},hp=#{hp},addr=#{addr},email=#{email} where num=#{num}
     	</update>
-    	<delete id="deleteMyInfo" parameterType="String">
-    		delete from bootmember where id=#{id}
-    	</delete>
+    	<select id="getDataByNum">
+    		select * from bootmember where num=#{num}
+    	</select>
   </mapper>

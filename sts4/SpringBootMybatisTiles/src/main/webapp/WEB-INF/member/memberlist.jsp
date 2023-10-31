@@ -59,15 +59,19 @@
 <button type="button" class="btn btn-info" onclick="location.href='form'">회원가입</button>
 <table class="table table-bordered">
 <caption align="top">회원목록</caption>
-	<tr>
+	<tr align="center" valign="middle">
 		<th>이름</th><th>아이디</th><th>연락처</th><th>주소</th><th>이메일</th><th>가입일</th>
 		<th>
 			<input type="checkbox" id="allcheck">삭제
 		</th>
 	</tr>	
   <c:forEach var="member" items="${list }">
-	<tr>
-		<td>${member.name }</td>
+	<tr align="center" valign="middle">
+		<td>
+		<img src="../membersave/${member.photo}" width="60">
+		<br>
+		${member.name }
+		</td>
 		<td>${member.id }</td>
 		<td>${member.hp }</td>
 		<td>${member.addr }</td>

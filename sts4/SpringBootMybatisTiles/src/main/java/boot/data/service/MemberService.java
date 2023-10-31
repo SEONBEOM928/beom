@@ -80,9 +80,11 @@ public class MemberService implements MemberServiceInter {
 	}
 
 	@Override
-	public void deleteMyInfo(String id) {
+	public MemberDto getDataByNum(String num) {
 		// TODO Auto-generated method stub
-		mapperInter.deleteMyInfo(id);
+		return mapperInter.getDataByNum(num);
 	}
+
+
 
 }
