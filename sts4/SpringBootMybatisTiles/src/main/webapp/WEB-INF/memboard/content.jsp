@@ -11,6 +11,94 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+	
+	$(function() {
+		list();
+		num=$("#num").val();
+		loginok="${sessionScope.loginok}";
+		myid="${sessionScope.myid}";
+		//alert(num+","+loginok+","+myid);
+		
+		//insert
+		$("#btnansweradd").click(function(){
+			var content=$("#content").val()
+			
+			if(content.length==0){
+				alert("댓글을 입력해주세요");
+				return;
+			}
+			
+			//입력했을때 ajax
+			$.ajax({
+				
+				type:"post",
+				url:"/mbanswer/ainsert",
+				data:{"num":num,"content":content},
+				dataType:"html",
+				success:function(){					
+					
+					//입력값 초기화
+					$("#content").val("");
+					location.reload();
+				}
+			})
+		})
+		
+		//댓글 수정창 띄우기
+		
+		//댓글 수정
+		
+		//댓글 삭제
+		$(document).on("click","i.adel",function(){
+			var idx=$(this).attr("idx");
+			
+			$.ajax({
+				
+				type:"get",
+				url:"/mbanswer/adelete",
+				data:{"idx":idx},
+				dataType:"html",
+				success:function(res){
+					list();
+				}
+			})
+		})
+	})
+	
+	function list(){
+		
+		num=$("#num").val();
+		
+		$.ajax({
+			
+			type:"get",
+			dataType:"json",
+			url:"/mbanswer/alist",
+			data:{"num":num},
+			success:function(res){
+				
+				$("span.acount").text(res.length); //댓글갯수 확인후 진행
+				
+				var s="";
+				$.each(res,function(i,dto){
+					
+					s+="<b>"+dto.name+"</b>: "+dto.content;
+					s+="<span class='day'>"+dto.writeday+"</span>";
+					if(loginok=='yes' && myid==dto.myid){
+						
+						s+="<i class='bi bi-pencil-square amod' idx='"+dto.idx+"'></i>";
+						s+="&nbsp";
+						s+="<i class='bi bi-trash adel' idx='"+dto.idx+"'></i>";
+					}
+					s+="<br>";
+				});
+				$("div.alist").html(s);
+			}
+		})
+		
+	}
+</script>
 </head>
 <body>
   <div style="margin: 50px 150px;">
@@ -42,8 +130,29 @@
     		    ${dto.content }
     		  </pre>
     		  <br>
-    		  <b>조회: ${dto.readcount }</b>
+    		  <b>조회: ${dto.readcount }</b> &nbsp;&nbsp;&nbsp;
+    		  <b>댓글: <span class="acount"></span></b>
     		</td>
+    	</tr>
+    	
+    	<!-- 댓글 -->
+    	<tr>
+    	  <td>
+    	  	<div class="alist"></div>
+    	  	
+    	  	<input type="hidden" id="num" value="${dto.num }">
+    	  	
+    	  	<c:if test="${sessionScope.loginok!=null }">
+				<div class="aform">
+				  <div class="d-inline-flex">
+				    <input type="text" class="form-control" style="width: 500px;"
+				    placeholder="댓글을 입력하세요" id="content">
+				    <button type="button" class="btn btn-info"
+				    id="btnansweradd">등록</button>
+				  </div>
+				</div>    	  	
+    	  	</c:if>
+    	  </td>
     	</tr>
     	
     	<!-- 버튼들 추가 -->
@@ -56,13 +165,13 @@
     		</c:if> 
     		<c:if test="${sessionScope!=null and sessionScope.myid==dto.myid }">
     		  <button type="button" class="btn btn-outline-info"
-    		  onclick="location.href='updateform?num=${dto.num}'">수정</button>
+    		  onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage}'">수정</button>
     		  
     		  <button type="button" class="btn btn-outline-info"
-    		  onclick="location.href='delete?num=${dto.num}'">삭제</button>
+    		  onclick="location.href='delete?num=${dto.num}&currentPage=${currentPage}'">삭제</button>
     		</c:if>    
     		  <button type="button" class="btn btn-outline-info"
-    		  onclick="location.href='list'">목록</button>
+    		  onclick="location.href='list?currentPage=${currentPage}'">목록</button>
     		
     		</td>
     	</tr>

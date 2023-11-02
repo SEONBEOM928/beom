@@ -13,9 +13,9 @@
 </head>
 <body>
 <div style="margin: 100px 250px">
-  <form action="insert" method="post" enctype="multipart/form-data">
+  <form action="update" method="post" enctype="multipart/form-data">
      <table class="table table-bordered" style="width: 500px;">
-       <caption align="top"><b>회원전용 글쓰기</b></caption>
+       <caption align="top"><b>회원전용 글쓰기 수정</b></caption>
        <tr>
        	 <th>제목</th>
        	 <td>
@@ -40,7 +40,7 @@
        	 <td colspan="2" align="center">
  			<button type="submit" class="btn btn-outline-info">등록</button>      
  			<button type="button" class="btn btn-outline-info"
- 			onclick="location.href='list?currentPage=${currentPage}'">목록</button>      	 
+ 			onclick="location.href='list'">목록</button>      	 
        	 </td>
        </tr>
      </table>
