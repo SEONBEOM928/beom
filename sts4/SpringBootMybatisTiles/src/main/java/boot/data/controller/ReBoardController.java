@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.security.auth.Subject;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -120,7 +123,8 @@ public class ReBoardController {
 	@PostMapping("/insert")
 	public String reboardinsert(@ModelAttribute ReboardDto dto,
 			@RequestParam ArrayList<MultipartFile> upload,
-			HttpSession session)
+			HttpSession session,
+			@RequestParam(defaultValue = "1") int currentPage)
 	{
 		String path=session.getServletContext().getRealPath("/rephoto");
 		String myid=(String)session.getAttribute("myid");
@@ -129,7 +133,7 @@ public class ReBoardController {
 		String uploadname="";
 		
 		if(upload.get(0).getOriginalFilename().equals(""))
-			uploadname=null;
+			uploadname="no";
 		else {
 			for(MultipartFile r:upload)
 			{
@@ -147,13 +151,43 @@ public class ReBoardController {
 					e.printStackTrace();
 				}
 			}
-			uploadname.substring(0, uploadname.length()-1);
+			uploadname=uploadname.substring(0, uploadname.length()-1);
 		}
 		dto.setPhoto(uploadname);
 		dto.setId(myid);
 		dto.setName(loginname);
 		
 		service.insertReboard(dto);
+		return "redirect:list?currentPage="+currentPage;
+	}
+	
+	@GetMapping("/content")
+	public String detail(int num,int currentPage,Model model)
+	{
+		//조회수 증가
+		service.updateReadCount(num);
+		
+		//dto
+		ReboardDto dto=service.getData(num);
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("currentPage", currentPage);
+		
 		return "/reboard/content";
 	}
+	
+	//추천수증가
+	@GetMapping("/likes")
+	@ResponseBody
+	public Map<String, Integer> likes(int num)
+	{
+		service.updateLikes(num);
+		int likes=service.getData(num).getLikes();
+		Map<String, Integer> map=new HashMap<>();
+		
+		map.put("likes", likes);
+		
+		return map;
+	}
+	//삭제
 }
