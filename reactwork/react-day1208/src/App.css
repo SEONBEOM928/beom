@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.number{
+  font-size: 60px;
+  color: red;
+  font-weight: bold;
+  margin-left: 100px;
+  margin-bottom: 10px;
+  text-shadow: 5px 5px 5px gray;
+}
+
+.box{
+  width:30px;
+  height:30px;
+  border:1px solid black;
+}
+
+img.photo{
+  width: 70px;
+  height: 85px;
+  border: 1px solid gray;
+  border-radius: 20px;
+}
+
+li.data{
+  list-style: none;
+  margin-top: 5px;
+  font-size: 20px;
+  width: 200px;
+  background-color: #ffc;
+  border: 1px solid gray;
+  text-align: center;
+  cursor: pointer;
+}

@@ -88,8 +88,7 @@
 		if($("span.passsuccess").text()!='ok'){
 			alert("비밀번호가 서로 다릅니다");
 			return false;
-		}
-			
+		}		
 	}
 </script>
 </head>

@@ -148,7 +148,6 @@ $(function(){
 	$("#searchbtn").click(function(){
 		
 		var search=$("#search").val();
-		alert(search);
 		if(search==""){
 			
 			alert("검색어를 입력해주세요");
