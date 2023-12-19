@@ -17,6 +17,8 @@ function RouteMain(props) {
             <div className='main'>
                 <Routes>
                     <Route path='/' element={<Main/>}/>
+                    
+                    {/* shop */}
                     <Route path='/shop/list' element={<Shop/>}/>
                     <Route path='/shop/form' element={<ShopForm/>}/>
                     <Route path='/shop/detail/:num' element={<ShopDetail/>}/>
